@@ -61,8 +61,6 @@ class MyClient(discord.Client):
                 elif command == f'{prefix}test':
                     await send('das ist ein Testcommand :^)')
 
-
-
                 if command == f'{prefix}twitch':
                     await send(f'Das ist der ofizielle Twitch account: https://www.twitch.tv/crispr_cas_9')
 
@@ -71,17 +69,6 @@ class MyClient(discord.Client):
 
                 if command == f'{prefix}HALLO':
                     await  send(f'@everyone kommt her')
-
-                if command == f'{prefix}javaBot':
-                    await send(f'Dieser andere Bot ist nen Java Bot, der geht aber nicht')
-
-                if command == f'{prefix}nein':
-                    await send(f'NEIN <@578620425060483072> ich werde nichts am Bot ändern!!!!!')
-
-                if command == f'{prefix}testtest':
-                    await send(f'Testtesttesttest')
-
-
 
                 if command == f'{prefix}github':
                     await send(f'Der Bot ist öffentlich auf gitHub: https://github.com/CrispiCas/CrispiBot1')
