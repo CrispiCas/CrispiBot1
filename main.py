@@ -80,6 +80,9 @@ class MyClient(discord.Client):
                 if command == f'{prefix}nein':
                     await send(f'NEIN <@578620425060483072> ich werde nichts am Bot ändern!!!!!')
 
+                if command == f'{prefix}testtest':
+                    await send(f'Testtesttesttest')
+
 
 
                 if command == f'{prefix}github':
