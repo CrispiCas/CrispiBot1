@@ -41,7 +41,7 @@ class MyClient(discord.Client):
 
             else:
                 if command == f'{prefix}help':
-                    await send(f'Dieser bot kann{prefix}help, {prefix}hi, {prefix}münze, {prefix}dice, {prefix}test, {prefix}tüv, {prefix}twitch, {prefix}HALLO, {prefix}github')
+                    await send(f'``Dieser bot kann{prefix}help, {prefix}hi, {prefix}münze, {prefix}dice, {prefix}test, {prefix}tüv, {prefix}twitch, {prefix}HALLO, {prefix}github``')
 
                 elif command == f'{prefix}hi':
                     await send(f'Hallo {user}')
@@ -61,9 +61,7 @@ class MyClient(discord.Client):
                 elif command == f'{prefix}test':
                     await send('das ist ein Testcommand :^)')
 
-                if command == f'{prefix}tüv':
-                    await send('Dieser Bot hat ein ofizielles Tüv siegel ')
-                    await send('https://cdn.discordapp.com/attachments/824574666361405460/825497780386660372/TUV_Plakette_fur_Floschy_.png')
+
 
                 if command == f'{prefix}twitch':
                     await send(f'Das ist der ofizielle Twitch account: https://www.twitch.tv/crispr_cas_9')
