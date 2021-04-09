@@ -10,9 +10,7 @@ class MyClient(discord.Client):
 
 
     #Nachricht schreiben
-    prefix = '+'
-    async def on_message(self, message ):
-
+    async def on_message(self, message):
 
         #Nachrichten loggen
         if message.author != client.user: #eine log.txt erstellen um alle nachrichten zu loggen :)
@@ -29,7 +27,7 @@ class MyClient(discord.Client):
 
 
         #commands
-        prefix = '+'
+        prefix = 'xd '
         user = message.author
         command = message.content.lower()
         send = message.channel.send
@@ -41,7 +39,12 @@ class MyClient(discord.Client):
 
             else:
                 if command == f'{prefix}help':
-                    await send(f'``Dieser bot kann{prefix}help, {prefix}hi, {prefix}münze, {prefix}dice, {prefix}test, {prefix}tüv, {prefix}twitch, {prefix}HALLO, {prefix}github``')
+                    embed = discord.Embed(colour=discord.Colour(0xffa8), url="https://discordapp.com")
+
+                    embed.add_field(name="Dieser Bot kann:",
+                                    value="xd help, xd hi, xd münze, xd dice, xd test, xd twitch, xd github.")
+
+                    await send(embed=embed)
 
                 elif command == f'{prefix}hi':
                     await send(f'Hallo {user}')
@@ -71,7 +74,7 @@ class MyClient(discord.Client):
                     await  send(f'@everyone kommt her')
 
                 if command == f'{prefix}github':
-                    await send(f'Der Bot ist öffentlich auf gitHub: https://github.com/CrispiCas/CrispiBot1')
+                    await send(f'der Bot ist öffenrlich auf GitHub: https://github.com/CrispiCas/CrispiBot1')
 
     async def on_message_edit(self, before, after):
 
