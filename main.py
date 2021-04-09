@@ -25,7 +25,7 @@ class MyClient(discord.Client):
 
             f = open('logs.txt', 'a')
             f.writelines(f'{message.author} in {message.channel} auf {message.guild} am {Datum} um {Zeit}: {message.content} \n')
-            f.close
+            f.close()
 
 
         #commands
@@ -85,7 +85,7 @@ class MyClient(discord.Client):
 
             f = open('logs.txt', 'a')
             f.writelines(f'{before.author} hat in {after.channel} auf {after.guild} am {Datum} um {Zeit} von "{before.content}" zu "{after.content}" bearbeitet \n')
-            f.close
+            f.close()
 
 
 
