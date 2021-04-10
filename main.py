@@ -14,7 +14,7 @@ class MyClient(discord.Client):
         await client.get_channel(830344946753077269).send(embed=embed)
         await client.get_channel(830513327192801300).send(embed=embed)
 
-
+        await client.change_presence(activity=discord.Streaming(name=f'Mortuale', url='https://www.twitch.tv/mortuale'))
 
     #Nachricht schreiben
     async def on_message(self, message):
@@ -39,6 +39,7 @@ class MyClient(discord.Client):
         user = message.author
         command = message.content.lower()
         send = message.channel.send
+        userIdgesplitet = str(user).split("#", 1)[0]
 
         if command.startswith(prefix):
 
@@ -57,7 +58,7 @@ class MyClient(discord.Client):
 
                     #hi command
                 elif command == f'{prefix}hi':
-                    await send(f'Hallo {user}')
+                    await send(f'Hallo {userIdgesplitet}')
 
                 #Münzen command
                 elif command == f'{prefix}münze':
@@ -105,7 +106,6 @@ class MyClient(discord.Client):
                         sys.exit()
 
                     else:
-                        userIdgesplitet = str(user).split("#", 1)[0]
                         await send(f'{userIdgesplitet} hast wohl nicht die rechte dafür xDD ')
 
 
