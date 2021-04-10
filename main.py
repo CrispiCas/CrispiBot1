@@ -14,7 +14,7 @@ class MyClient(discord.Client):
         await client.get_channel(830344946753077269).send(embed=embed)
         await client.get_channel(830513327192801300).send(embed=embed)
 
-        await client.change_presence(activity=discord.Streaming(name=f'Mortuale', url='https://www.twitch.tv/mortuale'))
+        await client.change_presence(activity=discord.Game(name=f'ein Spiel mit jemandem'))
 
     #Nachricht schreiben
     async def on_message(self, message):
