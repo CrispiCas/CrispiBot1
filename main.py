@@ -1,11 +1,18 @@
 import discord
 import random
+import sys
 class MyClient(discord.Client):
 
 
     #einloggen
     async def on_ready(self):
-        print('ich bin online :)')
+        print('ich bin online xDD')
+        embed = discord.Embed(colour=discord.Colour(0xffa8), url="https://discordapp.com")
+
+        embed.add_field(name="Ich bin online",
+                        value="benutze xd help um die Commands zu sehen ")
+        await client.get_channel(830344946753077269).send(embed=embed)
+        await client.get_channel(830513327192801300).send(embed=embed)
 
 
 
@@ -26,6 +33,7 @@ class MyClient(discord.Client):
             f.close()
 
 
+
         #commands
         prefix = 'xd '
         user = message.author
@@ -38,17 +46,20 @@ class MyClient(discord.Client):
                 return
 
             else:
+                #helpcommand mit einem Embed
                 if command == f'{prefix}help':
                     embed = discord.Embed(colour=discord.Colour(0xffa8), url="https://discordapp.com")
 
                     embed.add_field(name="Dieser Bot kann:",
-                                    value="xd help, xd hi, xd münze, xd dice, xd test, xd twitch, xd github.")
+                                    value="xd help, xd hi, xd münze, xd dice, xd test, xd twitch, xd github, xd info.")
 
                     await send(embed=embed)
 
+                    #hi command
                 elif command == f'{prefix}hi':
                     await send(f'Hallo {user}')
 
+                #Münzen command
                 elif command == f'{prefix}münze':
                     Kopf_oder_Zahl = random.randint(1,2)
                     if Kopf_oder_Zahl == 1:
@@ -56,26 +67,50 @@ class MyClient(discord.Client):
                     if Kopf_oder_Zahl == 2:
                         await send(f' {user} hat Zahl geworfen')
 
+                #Würfel command
                 elif command == f'{prefix}dice':
                     dice = random.randint(1,6)
                     await send(f'{user} hat eine {dice} gewürfelt')
 
-
+                #test command
                 elif command == f'{prefix}test':
                     await send('das ist ein Testcommand :^)')
 
+                #twitch command
                 if command == f'{prefix}twitch':
                     await send(f'Das ist der ofizielle Twitch account: https://www.twitch.tv/crispr_cas_9')
 
+                #info command
                 if command == f'{prefix}info':
                     await send(f'Das ist der erste Bot von Crispr Cas9. Er ist in Python geschrieben und das habe ich getan weil Floschy gesagt hat python ist besser')
 
-                if command == f'{prefix}HALLO':
-                    await  send(f'@everyone kommt her')
-
+                #GitHub command
                 if command == f'{prefix}github':
                     await send(f'der Bot ist öffenrlich auf GitHub: https://github.com/CrispiCas/CrispiBot1')
 
+
+                #stop command
+                if command == 'xd stop':
+
+
+                    id = str(message).split(' ')[12]
+                    userID = id.split('=')[1]
+                    if int(userID) == 802641583190573107:
+                        embed = discord.Embed(colour=discord.Colour(0xffa8), url="https://discordapp.com")
+
+                        embed.add_field(name="Ich bin nun offline",
+                                        value="Wenn ich offline bin kannst du meine Commands nicht mehr verwenden")
+                        await client.get_channel(830344946753077269).send(embed=embed)
+                        await client.get_channel(830513327192801300).send(embed=embed)
+                        sys.exit()
+
+                    else:
+                        userIdgesplitet = str(user).split("#", 1)[0]
+                        await send(f'{userIdgesplitet} hast wohl nicht die rechte dafür xDD ')
+
+
+
+    #Bearbeitete Nachrichten werden geloggt
     async def on_message_edit(self, before, after):
 
         if before.author != client.user:
@@ -89,7 +124,6 @@ class MyClient(discord.Client):
             f = open('logs.txt', 'a')
             f.writelines(f'{before.author} hat in {after.channel} auf {after.guild} am {Datum} um {Zeit} von "{before.content}" zu "{after.content}" bearbeitet \n')
             f.close()
-
 
 
 
