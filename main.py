@@ -14,7 +14,7 @@ class MyClient(discord.Client):
         await client.get_channel(830344946753077269).send(embed=embed)
         await client.get_channel(830513327192801300).send(embed=embed)
 
-        await client.change_presence(activity=discord.Game(name=f'ein Spiel mit Mir :('))
+        await client.change_presence(activity=discord.Game(name=f'mit mir '))
 
     #Nachricht schreiben
     async def on_message(self, message):
@@ -109,9 +109,7 @@ class MyClient(discord.Client):
                             sys.exit()
 
                     else:
-                        await send('das ist die Falsche Konsole')
-
-
+                        await send('das ist die Falscher Channel xD')
 
     #Bearbeitete Nachrichten werden geloggt
     async def on_message_edit(self, before, after):
