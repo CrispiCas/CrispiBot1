@@ -14,7 +14,7 @@ class MyClient(discord.Client):
         await client.get_channel(830344946753077269).send(embed=embed)
         await client.get_channel(830513327192801300).send(embed=embed)
 
-        await client.change_presence(activity=discord.Game(name=f'ein Spiel mit jemandem'))
+        await client.change_presence(activity=discord.Game(name=f'ein Spiel mit Mir :('))
 
     #Nachricht schreiben
     async def on_message(self, message):
@@ -90,29 +90,32 @@ class MyClient(discord.Client):
                     await send(f'der Bot ist öffenrlich auf GitHub: https://github.com/CrispiCas/CrispiBot1')
 
 
+
                 #stop command
                 elif command == 'xd stop':
+                    if message.channel == client.get_channel(830513327192801300):
 
 
-                    id = str(message).split(' ')[12]
-                    userID = id.split('=')[1]
-                    if int(userID) == 802641583190573107:
-                        embed = discord.Embed(colour=discord.Colour(0xffa8), url="https://discordapp.com")
+                        id = str(message).split(' ')[12]
+                        userID = id.split('=')[1]
+                        if int(userID) == 802641583190573107:
+                            embed = discord.Embed(colour=discord.Colour(0xffa8), url="https://discordapp.com")
 
-                        embed.add_field(name="Ich bin nun offline",
-                                        value="Wenn ich offline bin kannst du meine Commands nicht mehr verwenden")
-                        await client.get_channel(830344946753077269).send(embed=embed)
-                        await client.get_channel(830513327192801300).send(embed=embed)
-                        sys.exit()
+                            embed.add_field(name="Ich bin nun offline",
+                                            value="Wenn ich offline bin kannst du meine Commands nicht mehr verwenden")
+                            await client.get_channel(830344946753077269).send(embed=embed)
+                            await client.get_channel(830513327192801300).send(embed=embed)
+                            sys.exit()
 
                     else:
-                        await send(f'{userIdgesplitet} hast wohl nicht die rechte dafür :c ')
+                        await send('das ist die Falsche Konsole')
 
-                    if message.content.lower().startswith('xd:'):
-                        messagesplit = message.content.removeprefix('xd: ')
-                        x = open('logs/Ideen.txt', 'a')
-                        x.writelines(f'{messagesplit} \n')
-                        x.close()
+                if command.startswith('xd:'):
+                    print(message.content)
+                    messagesplit = message.content.split('xd: ')
+                    x = open('Ideen.txt', 'a')
+                    x.writelines(f'{messagesplit} \n')
+                    x.close()
 
 
     #Bearbeitete Nachrichten werden geloggt
