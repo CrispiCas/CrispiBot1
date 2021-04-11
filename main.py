@@ -28,7 +28,7 @@ class MyClient(discord.Client):
             Zeit = datumzeit.pop()
             Datum = str(datumzeit).removeprefix("['").removesuffix("']")
 
-            f = open('logs.txt', 'a')
+            f = open('logs/logs.txt', 'a')
             f.writelines(f'{message.author} in {message.channel} auf {message.guild} am {Datum} um {Zeit}: {message.content} \n')
             f.close()
 
@@ -64,34 +64,34 @@ class MyClient(discord.Client):
                 elif command == f'{prefix}münze':
                     Kopf_oder_Zahl = random.randint(1,2)
                     if Kopf_oder_Zahl == 1:
-                        await send(f'{user} hat Kopf geworfen')
+                        await send(f'{userIdgesplitet} hat Kopf geworfen')
                     if Kopf_oder_Zahl == 2:
-                        await send(f' {user} hat Zahl geworfen')
+                        await send(f' {userIdgesplitet} hat Zahl geworfen')
 
                 #Würfel command
                 elif command == f'{prefix}dice':
                     dice = random.randint(1,6)
-                    await send(f'{user} hat eine {dice} gewürfelt')
+                    await send(f'{userIdgesplitet} hat eine {dice} gewürfelt')
 
                 #test command
                 elif command == f'{prefix}test':
                     await send('das ist ein Testcommand :^)')
 
                 #twitch command
-                if command == f'{prefix}twitch':
+                elif command == f'{prefix}twitch':
                     await send(f'Das ist der ofizielle Twitch account: https://www.twitch.tv/crispr_cas_9')
 
                 #info command
-                if command == f'{prefix}info':
-                    await send(f'Das ist der erste Bot von Crispr Cas9. Er ist in Python geschrieben und das habe ich getan weil Floschy gesagt hat python ist besser')
+                elif command == f'{prefix}info':
+                    await send(f'Dieser Bot wurde von Crispr Cas 9 programmiert')
 
                 #GitHub command
-                if command == f'{prefix}github':
+                elif command == f'{prefix}github':
                     await send(f'der Bot ist öffenrlich auf GitHub: https://github.com/CrispiCas/CrispiBot1')
 
 
                 #stop command
-                if command == 'xd stop':
+                elif command == 'xd stop':
 
 
                     id = str(message).split(' ')[12]
@@ -106,8 +106,13 @@ class MyClient(discord.Client):
                         sys.exit()
 
                     else:
-                        await send(f'{userIdgesplitet} hast wohl nicht die rechte dafür xDD ')
+                        await send(f'{userIdgesplitet} hast wohl nicht die rechte dafür :c ')
 
+                    if message.content.lower().startswith('xd:'):
+                        messagesplit = message.content.removeprefix('xd: ')
+                        x = open('logs/Ideen.txt', 'a')
+                        x.writelines(f'{messagesplit} \n')
+                        x.close()
 
 
     #Bearbeitete Nachrichten werden geloggt
@@ -121,7 +126,7 @@ class MyClient(discord.Client):
             Zeit = datumzeit.pop()
             Datum = str(datumzeit).removeprefix("['").removesuffix("']")
 
-            f = open('logs.txt', 'a')
+            f = open('logs/logs.txt', 'a')
             f.writelines(f'{before.author} hat in {after.channel} auf {after.guild} am {Datum} um {Zeit} von "{before.content}" zu "{after.content}" bearbeitet \n')
             f.close()
 
