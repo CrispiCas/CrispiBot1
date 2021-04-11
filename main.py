@@ -48,6 +48,13 @@ class MyClient(discord.Client):
 
             else:
                 #helpcommand mit einem Embed
+                                if command.startswith('xd:'):
+                    print(message.content)
+                    messagesplit = message.content.split('xd: ')
+                    x = open('Ideen.txt', 'a')
+                    x.writelines(f'{messagesplit} \n')
+                    x.close()
+
                 if command == f'{prefix}help':
                     embed = discord.Embed(colour=discord.Colour(0xffa8), url="https://discordapp.com")
 
@@ -110,12 +117,6 @@ class MyClient(discord.Client):
                     else:
                         await send('das ist die Falsche Konsole')
 
-                if command.startswith('xd:'):
-                    print(message.content)
-                    messagesplit = message.content.split('xd: ')
-                    x = open('Ideen.txt', 'a')
-                    x.writelines(f'{messagesplit} \n')
-                    x.close()
 
 
     #Bearbeitete Nachrichten werden geloggt
