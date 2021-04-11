@@ -53,13 +53,14 @@ class MyClient(discord.Client):
                     embed = discord.Embed(colour=discord.Colour(0xffa8), url="https://discordapp.com")
 
                     embed.add_field(name="Dieser Bot kann:",
-                                    value="xd help, xd hi, xd münze, xd dice, xd test, xd twitch, xd github, xd info.")
+                                    value="xd help, xd hi, xd münze, xd dice, xd test, xd twitch, xd github, xd info, xd dm.")
 
                     await send(embed=embed)
 
                     #hi command
                 elif command == f'{prefix}hi':
                     await send(f'Hallo {userIdgesplitet}')
+                    await message.author.send('Huhu')
 
                 #Münzen command
                 elif command == f'{prefix}münze':
@@ -90,7 +91,8 @@ class MyClient(discord.Client):
                 elif command == f'{prefix}github':
                     await send(f'der Bot ist öffenrlich auf GitHub: https://github.com/CrispiCas/CrispiBot1')
 
-
+                elif command == f'{prefix}dm':
+                    await message.author.send('Du wolltest ne Dm hier hast du ne Dm')
 
                 #stop command
                 elif command == 'xd stop':
@@ -110,6 +112,8 @@ class MyClient(discord.Client):
 
                     else:
                         await send('das ist die Falscher Channel xD')
+
+
 
     #Bearbeitete Nachrichten werden geloggt
     async def on_message_edit(self, before, after):
