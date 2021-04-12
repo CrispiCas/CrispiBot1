@@ -14,7 +14,7 @@ class MyClient(discord.Client):
         await client.get_channel(830344946753077269).send(embed=embed)
         await client.get_channel(830513327192801300).send(embed=embed)
 
-        await client.change_presence(activity=discord.Game(name=f'mit mir '))
+        await client.change_presence(activity=discord.Game(name=f'mit dem Fichbot '))
 
     #Nachricht schreiben
     async def on_message(self, message):
@@ -105,29 +105,31 @@ class MyClient(discord.Client):
 
             #stop command
             elif command == 'xd stop':
-                if message.channel == client.get_channel(830513327192801300):
+                id = str(message).split(' ')[12]
+                userID = id.split('=')[1]
+                if int(userID) == 802641583190573107:
+                    if message.channel == client.get_channel(830513327192801300):
+                                embed = discord.Embed(colour=discord.Colour(0xffa8), url="https://discordapp.com")
 
-
-                    id = str(message).split(' ')[12]
-                    userID = id.split('=')[1]
-                    if int(userID) == 802641583190573107:
-                            embed = discord.Embed(colour=discord.Colour(0xffa8), url="https://discordapp.com")
-
-                            embed.add_field(name="Ich bin nun offline",
-                                            value="Wenn ich offline bin kannst du meine Commands nicht mehr verwenden")
-                            await client.get_channel(830344946753077269).send(embed=embed)
-                            await client.get_channel(830513327192801300).send(embed=embed)
-                            sys.exit()
-
+                                embed.add_field(name="Ich bin nun offline",
+                                                value="Wenn ich offline bin kannst du meine Commands nicht mehr verwenden")
+                                await client.get_channel(830344946753077269).send(embed=embed)
+                                await client.get_channel(830513327192801300).send(embed=embed)
+                                sys.exit()
                     else:
-                        await send('das ist die Falscher Channel xD')
+                        await send('das ist der Falsche Channel...Huch jetzt wisst ihr ja das ich nur über einen bestimmten channel gestoppt werden kann.')
 
-            #the idea command
-            elif message.content.startswith('xd Idee: '):
-                l = open('logs/Ideen.txt', 'a')
-                l.writelines(f'{message.content}\n')
-                l.close()
-                await send('Danke für deine Idee :)')
+                else:
+                    await send('hast wohl nicht die nötigen rechte dafür...tja doof gelaufen')
+
+
+
+                #the idea command
+                if message.content.startswith('xd Idee: '):
+                    l = open('logs/Ideen.txt', 'a')
+                    l.writelines(f'{message.content}\n')
+                    l.close()
+                    await send('Danke für deine Idee :)')
 
 
     #Bearbeitete Nachrichten werden geloggt
