@@ -126,12 +126,17 @@ class MyClient(discord.Client):
 
             #the idea command
             if message.content.startswith('xd idee: '):
+                messagesplit = message.content.replace("xd idee:", "")
                 l = open('logs/Ideen.txt', 'a')
-                l.writelines(f'{message.content}\n')
+                l.writelines(f'{message.author} hatte die Idee: {messagesplit}\n')
                 l.close()
                 await message.channel.purge(limit=1)
                 #await message.delete()
-                await message.author.send('Danke für deine Idee :)')
+                embed = discord.Embed(colour=discord.Colour(0xffa8), url="https://discordapp.com")
+
+                embed.add_field(name="Deine Idee:",
+                                value=f"{messagesplit}")
+                await message.author.send(embed = embed)
 
 
     #Bearbeitete Nachrichten werden geloggt
