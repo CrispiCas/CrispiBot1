@@ -92,7 +92,7 @@ class MyClient(discord.Client):
                     embed = discord.Embed(colour=discord.Colour(0xffa8), url="https://discordapp.com")
 
                     embed.add_field(name="CrispiBot:",
-                                    value='Dieser Bot ist der erste Discord bot von CrisprCas 9. Er ist in python geschrieben. Er ist öffentlich auf [GitHub](https://github.com/CrispiCas/CrispiBot1).'
+                                    value='Dieser Bot ist der erste Discord bot von CrisprCas 9. Er ist in python geschrieben. Und öffentlich auf [GitHub](https://github.com/CrispiCas/CrispiBot1).'
                                           ' Mit xd help erfahrt ihr alle commands')
 
                     await send(embed=embed)
