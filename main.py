@@ -60,6 +60,10 @@ class MyClient(discord.Client):
                     #hi command
                 elif command == f'{prefix}hi':
                     await send(f'Hallo {userIdgesplitet}')
+                    await message.author.send('Hallo du')
+
+                if command == f'{prefix}dm':
+                    await message.author.send('Du wolltest ne dm hier hast du ne Dm')
 
                 #Münzen command
                 elif command == f'{prefix}münze':
@@ -84,7 +88,12 @@ class MyClient(discord.Client):
 
                 #info command
                 elif command == f'{prefix}info':
-                    await send(f'Dieser Bot wurde von Crispr Cas 9 programmiert')
+                    embed = discord.Embed(colour=discord.Colour(0xffa8), url="https://discordapp.com")
+
+                    embed.add_field(name="CrispiBot:",
+                                    value='Dieser Bot ist der erste Discord bot von CrisprCas 9. Er ist in python geschrieben. Mit xd help erfahrt ihr alle commands')
+
+                    await send(embed=embed)
 
                 #GitHub command
                 elif command == f'{prefix}github':
