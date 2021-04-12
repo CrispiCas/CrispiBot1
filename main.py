@@ -41,74 +41,76 @@ class MyClient(discord.Client):
         send = message.channel.send
         userIdgesplitet = str(user).split("#", 1)[0]
 
-        if command.startswith(prefix):
 
-            if user == 828582354968248351:
-                return
 
-            else:
-                #helpcommand mit einem Embed
+        if user == 828582354968248351:
+            return
 
-                if command == f'{prefix}help':
-                    embed = discord.Embed(colour=discord.Colour(0xffa8), url="https://discordapp.com")
+        else:
+            #helpcommand mit einem Embed
 
-                    embed.add_field(name="Dieser Bot kann:",
-                                    value="xd help, xd hi, xd münze, xd dice, xd test, xd twitch, xd github, xd info.")
+            if command == f'{prefix}help':
+                embed = discord.Embed(colour=discord.Colour(0xffa8), url="https://discordapp.com")
 
-                    await send(embed=embed)
+                embed.add_field(name="Dieser Bot kann:",
+                                    value="xd help, xd hi, xd münze, xd dice, xd test, xd twitch, xd github, xd info, xd Idee: [Idee]."
+                                          "Wenn du eine Idee hast, mit welcher der Bot noch besser werden kann, dann sag mir uns mit xd Idee:")
 
-                    #hi command
-                elif command == f'{prefix}hi':
+                await send(embed=embed)
+
+                #hi command
+            elif command == f'{prefix}hi':
                     await send(f'Hallo {userIdgesplitet}')
                     await message.author.send('Hallo du')
 
-                if command == f'{prefix}dm':
+            if command == f'{prefix}dm':
                     await message.author.send('Du wolltest ne dm hier hast du ne Dm')
 
-                #Münzen command
-                elif command == f'{prefix}münze':
-                    Kopf_oder_Zahl = random.randint(1,2)
-                    if Kopf_oder_Zahl == 1:
+            #Münzen command
+            elif command == f'{prefix}münze':
+                Kopf_oder_Zahl = random.randint(1,2)
+                if Kopf_oder_Zahl == 1:
                         await send(f'{userIdgesplitet} hat Kopf geworfen')
-                    if Kopf_oder_Zahl == 2:
+                if Kopf_oder_Zahl == 2:
                         await send(f' {userIdgesplitet} hat Zahl geworfen')
 
                 #Würfel command
-                elif command == f'{prefix}dice':
+            elif command == f'{prefix}dice':
                     dice = random.randint(1,6)
                     await send(f'{userIdgesplitet} hat eine {dice} gewürfelt')
 
-                #test command
-                elif command == f'{prefix}test':
+            #test command
+            elif command == f'{prefix}test':
                     await send('das ist ein Testcommand :^)')
 
-                #twitch command
-                elif command == f'{prefix}twitch':
+            #twitch command
+            elif command == f'{prefix}twitch':
                     await send(f'Das ist der ofizielle Twitch account: https://www.twitch.tv/crispr_cas_9')
 
-                #info command
-                elif command == f'{prefix}info':
+            #info command
+            elif command == f'{prefix}info':
                     embed = discord.Embed(colour=discord.Colour(0xffa8), url="https://discordapp.com")
 
                     embed.add_field(name="CrispiBot:",
-                                    value='Dieser Bot ist der erste Discord bot von CrisprCas 9. Er ist in python geschrieben. Mit xd help erfahrt ihr alle commands')
+                                    value='Dieser Bot ist der erste Discord bot von CrisprCas 9. Er ist in python geschrieben. Er ist öffentlich auf [GitHub](https://github.com/CrispiCas/CrispiBot1).'
+                                          ' Mit xd help erfahrt ihr alle commands')
 
                     await send(embed=embed)
 
-                #GitHub command
-                elif command == f'{prefix}github':
-                    await send(f'der Bot ist öffenrlich auf GitHub: https://github.com/CrispiCas/CrispiBot1')
+            #GitHub command
+            elif command == f'{prefix}github':
+                    await send(f'der Bot ist öffentlich auf GitHub: https://github.com/CrispiCas/CrispiBot1')
 
 
 
-                #stop command
-                elif command == 'xd stop':
-                    if message.channel == client.get_channel(830513327192801300):
+            #stop command
+            elif command == 'xd stop':
+                if message.channel == client.get_channel(830513327192801300):
 
 
-                        id = str(message).split(' ')[12]
-                        userID = id.split('=')[1]
-                        if int(userID) == 802641583190573107:
+                    id = str(message).split(' ')[12]
+                    userID = id.split('=')[1]
+                    if int(userID) == 802641583190573107:
                             embed = discord.Embed(colour=discord.Colour(0xffa8), url="https://discordapp.com")
 
                             embed.add_field(name="Ich bin nun offline",
@@ -119,6 +121,13 @@ class MyClient(discord.Client):
 
                     else:
                         await send('das ist die Falscher Channel xD')
+
+            #the idea command
+            if message.content.startswith('xd Idee: '):
+                l = open('Ideen.txt', 'a')
+                l.writelines(f'{message.content}\n')
+                l.close()
+                await send('Danke für deine Idee :)')
 
     #Bearbeitete Nachrichten werden geloggt
     async def on_message_edit(self, before, after):
