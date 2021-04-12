@@ -53,8 +53,8 @@ class MyClient(discord.Client):
                 embed = discord.Embed(colour=discord.Colour(0xffa8), url="https://discordapp.com")
 
                 embed.add_field(name="Dieser Bot kann:",
-                                    value="xd help, xd hi, xd münze, xd dice, xd test, xd twitch, xd github, xd info, xd Idee: [Idee]."
-                                          "Wenn du eine Idee hast, mit welcher der Bot noch besser werden kann, dann sag mir uns mit xd Idee:")
+                                    value="xd help, xd hi, xd münze, xd dice, xd test, xd twitch, xd github, xd info, xd idee: [Idee]."
+                                          "Wenn du eine Idee hast, mit welcher der Bot noch besser werden kann, dann sag mir uns mit xd idee:")
 
                 await send(embed=embed)
 
@@ -92,7 +92,7 @@ class MyClient(discord.Client):
                     embed = discord.Embed(colour=discord.Colour(0xffa8), url="https://discordapp.com")
 
                     embed.add_field(name="CrispiBot:",
-                                    value='Dieser Bot ist der erste Discord bot von CrisprCas 9. Er ist in python geschrieben. Und öffentlich auf [GitHub](https://github.com/CrispiCas/CrispiBot1).'
+                                    value='Dieser Bot ist der erste Discord bot von CrisprCas 9. Weitere Informationen [hier](https://github.com/CrispiCas/CrispiBot1/blob/master/README.md) Und öffentlich auf [GitHub](https://github.com/CrispiCas/CrispiBot1).'
                                           ' Mit xd help erfahrt ihr alle commands')
 
                     await send(embed=embed)
@@ -124,12 +124,14 @@ class MyClient(discord.Client):
 
 
 
-                #the idea command
-                if message.content.startswith('xd Idee: '):
-                    l = open('logs/Ideen.txt', 'a')
-                    l.writelines(f'{message.content}\n')
-                    l.close()
-                    await send('Danke für deine Idee :)')
+            #the idea command
+            if message.content.startswith('xd idee: '):
+                l = open('logs/Ideen.txt', 'a')
+                l.writelines(f'{message.content}\n')
+                l.close()
+                await message.channel.purge(limit=1)
+                #await message.delete()
+                await message.author.send('Danke für deine Idee :)')
 
 
     #Bearbeitete Nachrichten werden geloggt
