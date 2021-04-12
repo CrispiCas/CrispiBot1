@@ -123,11 +123,12 @@ class MyClient(discord.Client):
                         await send('das ist die Falscher Channel xD')
 
             #the idea command
-            if message.content.startswith('xd Idee: '):
-                l = open('Ideen.txt', 'a')
+            elif message.content.startswith('xd Idee: '):
+                l = open('logs/Ideen.txt', 'a')
                 l.writelines(f'{message.content}\n')
                 l.close()
                 await send('Danke für deine Idee :)')
+
 
     #Bearbeitete Nachrichten werden geloggt
     async def on_message_edit(self, before, after):
