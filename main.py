@@ -64,7 +64,19 @@ class MyClient(discord.Client):
                     await message.author.send('Hallo du')
 
             if command == f'{prefix}dm':
-                    await message.author.send('Du wolltest ne dm hier hast du ne Dm')
+                    dm = random.randint(1,5)
+                    if dm == 1:
+                        await message.author.send('Du wolltest ne dm hier hast du ne Dm')
+                    elif dm == 2:
+                        await message.author.send(f'Huhu {userIdgesplitet}')
+                    elif dm == 3:
+                        await message.author.send(f'mir fällt nichts ein bitte schick mir Vorschläge mit xd idee:')
+                    elif dm == 4:
+                        await message.author.send('............................')
+                    elif dm == 5:
+                        await send(f'*Hier könnte ihre Nachricht stehen*')
+
+
 
             #Münzen command
             elif command == f'{prefix}münze':
