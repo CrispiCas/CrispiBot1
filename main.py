@@ -11,7 +11,6 @@ class MyClient(discord.Client):
 
         embed.add_field(name="Ich bin online",
                         value="benutze xd help um die Commands zu sehen ")
-        await client.get_channel(830344946753077269).send(embed=embed)
         await client.get_channel(830513327192801300).send(embed=embed)
 
         await client.change_presence(activity=discord.Game(name=f'mit dem Fichbot '))
