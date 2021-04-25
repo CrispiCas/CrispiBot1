@@ -160,7 +160,7 @@ class MyClient(discord.Client):
             for x in blacklist:
                 if x in message.content:
                     await message.delete()
-                    await message.author.send('Bitte benutze nicht solche begriffe')
+                    await message.author.send('Bitte benutze nicht solche begriffe!')
 
 
     #Bearbeitete Nachrichten werden geloggt
