@@ -1,2 +1,5 @@
 # Project exclude paths
 /venv/
+logs/logs.txt
+logs/Ideen.txt
+
