@@ -1,6 +1,7 @@
 import discord
 import random
 import sys
+import time
 class MyClient(discord.Client):
 
 
@@ -112,6 +113,11 @@ class MyClient(discord.Client):
             elif command == f'{prefix}github':
                     await send(f'der Bot ist öffentlich auf GitHub: https://github.com/CrispiCas/CrispiBot1')
 
+            elif command == f'{prefix}wichtig':
+                await send('Schlüselszene, Schlüsselszene, SCHLÜSSELSZENE')
+                time.sleep(10)
+                await send('Merk dir das das wird gaaaaaaaaanz wichtig')
+
 
 
             #stop command
@@ -148,6 +154,13 @@ class MyClient(discord.Client):
                 embed.add_field(name="Deine Idee:",
                                 value=f"{messagesplit}")
                 await message.author.send(embed = embed)
+
+            #blacklist 
+            blacklist = ['test', 'nutte']
+            for x in blacklist:
+                if x in message.content:
+                    await message.delete()
+                    await message.author.send('Bitte benutze nicht solcjhe begriffe')
 
 
     #Bearbeitete Nachrichten werden geloggt
