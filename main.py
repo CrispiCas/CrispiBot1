@@ -48,7 +48,6 @@ class MyClient(discord.Client):
 
         else:
             #helpcommand mit einem Embed
-
             if command == f'{prefix}help':
                 embed = discord.Embed(colour=discord.Colour(0xffa8), url="https://discordapp.com")
 
@@ -156,11 +155,85 @@ class MyClient(discord.Client):
                 await message.author.send(embed = embed)
 
             #blacklist 
-            blacklist = ['test', 'nutte']
+            blacklist = ['test', 'Doofman']
             for x in blacklist:
-                if x in message.content:
+                if x in message.content.lower():
                     await message.delete()
                     await message.author.send('Bitte benutze nicht solche begriffe!')
+
+
+            #the Virus fun command
+            if command == 'würfel':
+                rand3 = random.randint(0,3)
+                await send('__Preparing Virus Data.__')
+                await send('`0%`')
+                time.sleep(rand3)
+                await send('`78%`')
+                time.sleep(rand3)
+                await send('`100%`')
+                time.sleep(rand3)
+                
+                time.sleep(3)
+                await send('**Virus Download has started.**')
+                await send('__Downloading data.__')
+                await send('`0%`')
+                time.sleep(rand3)
+                await send('`3%`')
+                time.sleep(rand3)
+                await send('`11%`')
+                time.sleep(rand3)
+                await send('`17%`')
+                time.sleep(rand3)
+                await send('`24%`')
+                time.sleep(rand3)
+                await send('`25%`')
+                time.sleep(rand3)
+                await send('`27%`')
+                time.sleep(rand3)
+                await send('`36%`')
+                time.sleep(rand3)
+                await send('`40%`')
+                time.sleep(rand3)
+                await send('`52%`')
+                time.sleep(rand3) 
+                await send('`66%`')
+                time.sleep(rand3)
+                await send('`82%`')
+                time.sleep(rand3)
+                await send('`90%`')
+                time.sleep(rand3)
+                await send('`91%`')
+                time.sleep(rand3)
+                await send('`92%`')
+                time.sleep(rand3)
+                await send('`95%`')
+                time.sleep(rand3)
+                await send('`100%`') 
+                time.sleep(rand3)
+
+                await send('__Freezing Data.__')
+                await send('`0%`')
+                time.sleep(rand3)
+                await send('`32%`')
+                time.sleep(rand3)
+                await send('`54%`')
+                time.sleep(rand3)
+                await send('`89%`')
+                time.sleep(rand3)
+                await send('`100%`')
+                time.sleep(rand3)
+
+                await send('__Starting Virus.__')
+                await send('`0%`')
+                time.sleep(rand3)
+                await send('`74%`')
+                time.sleep(rand3)
+                await send('`100%`')
+                time.sleep(rand3)
+
+                await send('**__Virus Installed and Started.__**')
+                await send('*You Have now remote acsess to every system that connectet to this page*')
+
 
 
     #Bearbeitete Nachrichten werden geloggt
