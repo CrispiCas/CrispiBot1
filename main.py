@@ -16,6 +16,7 @@ class MyClient(discord.Client):
         await client.get_channel(830513327192801300).send(embed=embed)
 
         await client.change_presence(activity=discord.Game(name=f'mit dem Fichbot '))
+        print('Bot is finally started')
 
     #Nachricht schreiben
     async def on_message(self, message):
