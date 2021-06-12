@@ -7,6 +7,7 @@ class MyClient(discord.Client):
 
     #einloggen
     async def on_ready(self):
+        print('Lustig')
         print('ich bin online xDD')
         embed = discord.Embed(colour=discord.Colour(0xffa8), url="https://discordapp.com")
 
