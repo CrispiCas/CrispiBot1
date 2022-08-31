@@ -164,7 +164,7 @@ class MyClient(discord.Client):
                     await message.author.send('Bitte benutze nicht solche begriffe!')
 
 
-            #the Virus fun command
+            # the Virus fun command
             if command == 'würfel':
                 rand3 = random.randint(0,3)
                 await send('__Preparing Virus Data.__')
